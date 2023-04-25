@@ -6,7 +6,9 @@
 
 int main() {
 
-    fullyAssociative("traces.txt");
+    //fullyAssociative("traces.txt");
+    printf("\n");
+    directMapped("traces.txt");
 
     return 0;
 }

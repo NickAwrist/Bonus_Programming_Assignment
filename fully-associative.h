@@ -6,5 +6,5 @@
 
 struct Node;
 
-int search(struct Node *cache, char *trace);
+int searchFA(struct Node *cache, char *trace);
 void fullyAssociative(char *input);

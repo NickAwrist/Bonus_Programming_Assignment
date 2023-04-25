@@ -1,14 +1,10 @@
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#include "leak_detector_c.h"
-#include "hexToBinary.h"
+#include "fully-associative.h"
 
 typedef struct Node{
     char *value;
 }Node;
 
-int search(Node *cache, char *trace){
+int searchFA(Node *cache, char *trace){
     for(int i=0; i<32; i++){
 
         if(cache[i].value == NULL)
@@ -54,7 +50,7 @@ void fullyAssociative(char *input){
 
         strcpy(currentNode->value, hexToBinary(trace));
 
-        if(search(cache, currentNode->value) == 1) {
+        if(searchFA(cache, currentNode->value) == 1) {
             hits++;
         }
         else {
