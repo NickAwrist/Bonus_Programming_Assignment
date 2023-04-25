@@ -27,7 +27,7 @@ void directMapped(char *input){
     int totalLength = 0;
 
     while (totalLength!=9999){
-        char *currentTrace = malloc(sizeof(char)*100);
+        char *currentTrace = malloc(sizeof(char)*50);
         if(fscanf(inputFile, "%s", currentTrace) != 1){
             free(currentTrace);
             break;
