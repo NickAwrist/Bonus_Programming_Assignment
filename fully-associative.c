@@ -22,7 +22,7 @@ void fullyAssociative(char *input){
     FILE *inputFile = NULL;
     inputFile = fopen(input, "r");
 
-    Node *cache = malloc(sizeof(Node)*32);
+    Node *cache = calloc(32, sizeof(Node));
     for(int i=0; i<32; i++)
         cache[i].value = NULL;
 
@@ -32,7 +32,7 @@ void fullyAssociative(char *input){
     int totalLength = 0;
 
     while (totalLength != 9999){
-        char *currentTrace = malloc(sizeof(char)*50);
+        char *currentTrace = calloc(50, sizeof(char));
         if(fscanf(inputFile, "%s", currentTrace) != 1){
             free(currentTrace);
             break;
@@ -45,8 +45,8 @@ void fullyAssociative(char *input){
             strcpy(&trace[i-2], &currentTrace[i]);
         }
 
-        Node *currentNode = malloc(sizeof(Node));
-        currentNode->value = malloc(sizeof(char)*100);
+        Node *currentNode = calloc(1, sizeof(Node));
+        currentNode->value = calloc(100, sizeof(char));
 
         strcpy(currentNode->value, hexToBinary(trace));
 

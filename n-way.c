@@ -28,9 +28,9 @@ void nWay(char *input, int n){
     inputFile = fopen(input, "r");
 
     int sets = 32/n;
-    Set *cache = malloc(sizeof(Set)*sets);
+    Set *cache = calloc(sets, sizeof(Set));
     for(int i=0; i<sets; i+=n){
-        cache[i].nodes = malloc(sizeof(Node)*n);
+        cache[i].nodes = calloc(n, sizeof(Node));
         for(int j=0; j<n; j++){
             cache[i].nodes[j].value = NULL;
         }
@@ -42,7 +42,7 @@ void nWay(char *input, int n){
 
     while (totalLength!=9999){
 
-        char *currentTrace = malloc(sizeof(char)*50);
+        char *currentTrace = calloc(50, sizeof(char));
         if(fscanf(inputFile, "%s", currentTrace) != 1){
             free(currentTrace);
             break;
@@ -54,9 +54,8 @@ void nWay(char *input, int n){
             strcpy(&trace[i-2], &currentTrace[i]);
         }
 
-
-        Node *currentNode = malloc(sizeof(Node));
-        currentNode->value = malloc(sizeof(char)*100);
+        Node *currentNode = calloc(1, sizeof(Node));
+        currentNode->value = calloc(100, sizeof(char));
 
 
         strcpy(currentNode->value, hexToBinary(trace));
@@ -75,7 +74,6 @@ void nWay(char *input, int n){
         free(trace);
         free(currentTrace);
     }
-    printf("done\n");
 
     int result = fclose(inputFile);
     if(result != 0){
