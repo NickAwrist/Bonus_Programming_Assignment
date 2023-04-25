@@ -1,5 +1,4 @@
-#include <string.h>
-#include <math.h>
+#include "binaryToDecimal.h"
 
 int binaryToDecimal(char *binary) {
     int decimal = 0;
