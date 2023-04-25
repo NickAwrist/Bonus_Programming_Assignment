@@ -47,7 +47,6 @@ void nWay(char *input, int n){
             free(currentTrace);
             break;
         }
-
         int length = (int) strlen(currentTrace);
         char *trace = (char*) calloc(length + 1, sizeof(char));
 
@@ -76,6 +75,7 @@ void nWay(char *input, int n){
         free(trace);
         free(currentTrace);
     }
+    printf("done\n");
 
     int result = fclose(inputFile);
     if(result != 0){
@@ -85,6 +85,12 @@ void nWay(char *input, int n){
     double hitRate = (((double) hits)/totalLength)*100;
     double missRate = (((double) misses)/totalLength)*100;
 
+    for(int i = 0; i < sets; i++) {
+        free(cache[i].nodes);
+        for(int j=0; j<n; j++){
+            free(cache[i].nodes[j].value);
+        }
+    }
     free(cache);
 
     printf("%d-Way Mapped:\nHit rate = %.2lf %\nMiss rate = %.2lf %\n", n, hitRate, missRate);
